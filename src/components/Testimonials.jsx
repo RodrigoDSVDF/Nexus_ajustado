@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { Star } from 'lucide-react';
 
+// Importações Reais
 import socialWoman2 from '../assets/femele_social02.png';
 import socialWoman1 from '../assets/femele_social.png';
 import socialMan from '../assets/masculino_social.png';
@@ -11,19 +12,19 @@ const testimonials = [
         img: socialMan,
         name: "Carlos Mendes",
         role: "Desenvolvedor Senior",
-        text: "O material é direto ao ponto. Em uma tarde eu já estava aplicando conceitos que economizaram horas da minha semana. O melhor investimento que fiz esse ano."
+        text: "O material é direto ao ponto. Em uma tarde eu já estava aplicando conceitos que economizaram horas da minha semana."
     },
     {
         img: socialWoman1,
         name: "Ana Paula S.",
         role: "Marketing Digital",
-        text: "Eu tinha medo da IA substituir meu trabalho. O Nexus me ensinou a usar ela como minha 'estagiária' de luxo. A qualidade das minhas entregas subiu drasticamente."
+        text: "Eu tinha medo da IA substituir meu trabalho. O Nexus me ensinou a usar ela como minha 'estagiária' de luxo."
     },
     {
         img: socialWoman2,
         name: "Juliana Costa",
         role: "Redatora & Copywriter",
-        text: "O banco de prompts se pagou no primeiro projeto que fechei. Não é só teoria, é um sistema prático para quem quer ganhar dinheiro com agilidade."
+        text: "O banco de prompts se pagou no primeiro projeto que fechei. Não é só teoria, é um sistema prático."
     }
 ];
 
