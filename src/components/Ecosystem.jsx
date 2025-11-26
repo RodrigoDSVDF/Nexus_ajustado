@@ -2,42 +2,40 @@ import { memo } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { Sparkles } from 'lucide-react';
 
-// --- COMENTEI AS IMPORTAÇÕES PARA O BUILD PASSAR ---
-// Quando você subir as imagens reais para a pasta assets, pode descomentar.
-// import ecossistemaNexusImg from '../assets/ecossistema-nexus.png';
-// import engenhariaContextoImg from '../assets/engenharia-contexto.png';
-// import segundoCerebroImg from '../assets/segundo-cerebro.png';
-// import mapaMentalImg from '../assets/mapa-mental.png';
-// import simbioseImg from '../assets/simbiose.png';
+// Importações Reais
+import ecossistemaNexusImg from '../assets/ecossistema-nexus.png';
+import engenhariaContextoImg from '../assets/engenharia-contexto.png';
+import segundoCerebroImg from '../assets/segundo-cerebro.png';
+import mapaMentalImg from '../assets/mapa-mental.png';
+import simbioseImg from '../assets/simbiose.png';
 
 const ecosystemFeatures = [
   {
-    // Usando placeholder online temporário
-    image: "https://placehold.co/600x400/1a1a1a/2DD4BF?text=Ecossistema+Nexus", 
+    image: ecossistemaNexusImg,
     title: "Chega de Confusão. O Poder da I.A., Unificado.",
     description: "Você já perdeu horas buscando qual a melhor ferramenta de I.A. para cada tarefa? Esse tempo acabou. O Ecossistema Nexus é o centro de comando que integra as I.As mais poderosas do mercado.",
     tagline: "Da Overwhelm à Ação Direcionada."
   },
   {
-    image: "https://placehold.co/600x400/1a1a1a/FF6B35?text=Engenharia+de+Contexto",
+    image: engenhariaContextoImg,
     title: "Pare de Dar 'Ordens'. Comece a Construir Diálogos.",
     description: "Prompt básico é coisa do passado. A Engenharia de Contexto é a metodologia que ensina você a arquitetar instruções complexas, fornecendo personalidade e objetivo.",
     tagline: "Domine a Linguagem da Nova Era."
   },
   {
-    image: "https://placehold.co/600x400/1a1a1a/2DD4BF?text=Segundo+Cerebro",
+    image: segundoCerebroImg,
     title: "Sua Mente Livre para Criar, Seu Segundo Cérebro para Organizar.",
     description: "Ideias brilhantes se perdem na bagunça? O caos mental trava seu potencial? Nosso sistema fornece a estrutura definitiva para capturar e conectar conhecimento.",
     tagline: "Clareza Mental é Produtividade Ilimitada."
   },
   {
-    image: "https://placehold.co/600x400/1a1a1a/FF6B35?text=Mapa+Mental",
+    image: mapaMentalImg,
     title: "Acelere Seu Aprendizado em 10x. Visualize o Conhecimento.",
     description: "Entenda conceitos complexos em minutos. Aprenda a usar a I.A. para gerar mapas mentais dinâmicos que conectam informações de forma lógica e visual.",
     tagline: "Estruture Ideias. Expanda Sua Mente."
   },
   {
-    image: "https://placehold.co/600x400/1a1a1a/2DD4BF?text=Simbiose",
+    image: simbioseImg,
     title: "Não Lute Contra a Máquina. Funda-Se a Ela.",
     description: "Este é o estágio final da evolução pessoal na era digital. A Simbiose homem-máquina não é ficção científica; é uma habilidade prática.",
     tagline: "Seja Imparável. Evolua para o Próximo Nível."
