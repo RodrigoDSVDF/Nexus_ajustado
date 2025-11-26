@@ -31,8 +31,9 @@ jobs:
         with:
           version: 9
 
+      # AQUI ESTÁ A CORREÇÃO (O flag --no-frozen-lockfile)
       - name: Instalar Dependências
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Construir Site (Build)
         run: pnpm run build
