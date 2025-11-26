@@ -9,4 +9,33 @@ body {
   margin: 0;
   background-color: #0A0A0A;
   color: #f1f5f9;
+  overflow-x: hidden;
+}
+
+/* --- ANIMAÇÃO DAS FAIXAS HORIZONTAIS --- */
+.scrolling-banner-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  display: flex;
+}
+
+.scrolling-banner-content {
+  display: flex;
+  animation: scroll 30s linear infinite;
+  min-width: 100%;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Efeito de brilho nas bordas */
+.nexus-card {
+  transition: all 0.3s ease;
+}
+.nexus-card:hover {
+  box-shadow: 0 0 20px rgba(45, 212, 191, 0.1);
 }
