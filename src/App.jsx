@@ -1,24 +1,22 @@
-// src/App.jsx
 import React, { useState, useEffect, Suspense, lazy } from 'react'
-import './App.css'
+import { Zap, CheckCircle, Shield, Rocket, Terminal, Layers, Brain, Cpu } from 'lucide-react';
+import './index.css' // Garante que o CSS novo seja carregado
 
-// Importações Críticas (Direct Import)
+// Importações Críticas
 import Header from './components/Header'
 import Hero from './components/Hero'
 
-// Importações Lazy (Só carrega o código quando necessário)
-const Ecosystem = lazy(() => import('./components/Ecosystem')); // Você precisa criar este arquivo com o código da seção Ecosystem
-const PainSection = lazy(() => import('./components/PainSection')); // Você precisa criar este arquivo
+// Importações Lazy
+const Ecosystem = lazy(() => import('./components/Ecosystem'));
+const PainSection = lazy(() => import('./components/PainSection'));
 const BentoGrid = lazy(() => import('./components/BentoGrid'));
-const StackSection = lazy(() => import('./components/StackSection')); // Você precisa criar este arquivo
-const Testimonials = lazy(() => import('./components/Testimonials')); // Você precisa criar este arquivo
-const FAQ = lazy(() => import('./components/FAQ')); // Você precisa criar este arquivo
-const Footer = lazy(() => import('./components/Footer')); // Você precisa criar este arquivo
+const StackSection = lazy(() => import('./components/StackSection'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+const FAQ = lazy(() => import('./components/FAQ'));
+const Footer = lazy(() => import('./components/Footer'));
 
-// Constante Global
 const CHECKOUT_LINK = "https://pay.cakto.com.br/5dUKrWD";
 
-// Pixel Tracking
 const handleTrackCheckout = () => {
   if (typeof window !== 'undefined' && window.fbq) {
     window.fbq('track', 'InitiateCheckout');
@@ -26,48 +24,81 @@ const handleTrackCheckout = () => {
 };
 
 function App() {
-  // Cores CSS Variables podem ser definidas no CSS global, mas mantemos as constantes aqui se precisar passar via prop
-  
   return (
-    <div className="min-h-screen bg-[#0A0A0A] font-['Poppins',sans-serif] overflow-x-hidden text-slate-100 selection:bg-[#FF4F1F] selection:text-white">
+    <div className="min-h-screen bg-[#0A0A0A] font-sans text-slate-100 selection:bg-[#FF4F1F] selection:text-white">
       
       <Header checkoutLink={CHECKOUT_LINK} onTrack={handleTrackCheckout} />
       
-      {/* Background Dinâmico - Mantido aqui pois é global */}
+      {/* Background Dinâmico */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-[#2DD4BF]/10 rounded-full blur-[120px] animate-pulse-slow will-change-transform"></div>
-          <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-[#FF6B35]/10 rounded-full blur-[100px] animate-pulse-slow will-change-transform" style={{animationDelay: '2s'}}></div>
-          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center opacity-5"></div>
+          <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-[#2DD4BF]/10 rounded-full blur-[120px] animate-pulse"></div>
+          <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-[#FF6B35]/10 rounded-full blur-[100px] animate-pulse" style={{animationDelay: '2s'}}></div>
       </div>
 
       <main>
+        {/* 1. FAIXA DE URGÊNCIA (NOVA) */}
+        <div className="relative z-20 bg-[#2DD4BF] text-black py-2 border-b border-[#2DD4BF]/50">
+            <div className="scrolling-banner-container">
+                <div className="scrolling-banner-content font-bold text-sm tracking-widest uppercase">
+                    {/* Repetimos o conteúdo 2x para criar o loop infinito */}
+                    {[...Array(2)].map((_, i) => (
+                        <div key={i} className="flex items-center gap-8 px-4">
+                            <span className="flex items-center gap-2"><Zap size={16}/> OFERTA DE LANÇAMENTO</span>
+                            <span className="flex items-center gap-2"><CheckCircle size={16}/> ACESSO VITALÍCIO</span>
+                            <span className="flex items-center gap-2"><Shield size={16}/> GARANTIA DE 7 DIAS</span>
+                            <span className="flex items-center gap-2"><Rocket size={16}/> ATUALIZAÇÕES INCLUSAS</span>
+                            <span className="flex items-center gap-2"><Zap size={16}/> OFERTA DE LANÇAMENTO</span>
+                            <span className="flex items-center gap-2"><CheckCircle size={16}/> ACESSO VITALÍCIO</span>
+                            <span className="flex items-center gap-2"><Shield size={16}/> GARANTIA DE 7 DIAS</span>
+                            <span className="flex items-center gap-2"><Rocket size={16}/> ATUALIZAÇÕES INCLUSAS</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+
         <Hero checkoutLink={CHECKOUT_LINK} onTrack={handleTrackCheckout} />
 
-        {/* Suspense envolve tudo que não é dobra principal */}
-        <Suspense fallback={<div className="h-40 w-full flex items-center justify-center text-[#2DD4BF]">Carregando Nexus...</div>}>
+        <Suspense fallback={<div className="py-20 text-center text-[#2DD4BF]">Carregando...</div>}>
             
-            {/* Componentes separados */}
-            {/* Nota: Para o código funcionar, você deve criar os arquivos Ecosystem.jsx, etc. com o código original correspondente */}
             <Ecosystem /> 
-            
             <PainSection />
-            
             <BentoGrid checkoutLink={CHECKOUT_LINK} onTrack={handleTrackCheckout} />
             
-            {/* Faixa Intermediária - Pode ser um componente pequeno ou ficar aqui se for muito simples */}
-            <div className="relative z-20 py-6 overflow-hidden bg-[#0A0A0A] border-y border-[#333]">
-                {/* ... código da faixa ... */}
+            {/* 2. FAIXA INTERMEDIÁRIA (NOVA) */}
+            <div className="relative z-20 py-4 bg-gradient-to-r from-[#0A0A0A] via-[#111] to-[#0A0A0A] border-y border-[#333]">
+                <div className="scrolling-banner-container opacity-80">
+                     <div className="scrolling-banner-content text-[#2DD4BF] font-mono tracking-widest text-lg">
+                        {[...Array(2)].map((_, i) => (
+                            <div key={i} className="flex items-center gap-12 px-6">
+                                <span className="flex items-center gap-3"><Terminal size={20} className="text-[#FF6B35]"/> ENGENHARIA DE CONTEXTO</span>
+                                <span className="flex items-center gap-3"><Layers size={20} className="text-[#FF6B35]"/> ECOSSISTEMA DE PRODUTIVIDADE</span>
+                                <span className="flex items-center gap-3"><Brain size={20} className="text-[#FF6B35]"/> APRENDIZADO ACELERADO</span>
+                                <span className="flex items-center gap-3"><Cpu size={20} className="text-[#FF6B35]"/> INTELIGÊNCIA ESTRATÉGICA</span>
+                            </div>
+                        ))}
+                     </div>
+                </div>
             </div>
 
             <StackSection checkoutLink={CHECKOUT_LINK} onTrack={handleTrackCheckout} />
-            
             <Testimonials />
-            
             <FAQ />
             
-            {/* Offer Section pode ser um componente separado também */}
+            {/* Seção de Oferta Final Simplificada */}
             <section id="offer" className="relative z-10 py-32 px-4">
-                 {/* ... código da seção de oferta final ... */}
+                 <div className="max-w-4xl mx-auto text-center">
+                    <Shield className="w-20 h-20 text-[#2DD4BF] mx-auto mb-6" />
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6">Garantia Blindada de 7 Dias</h2>
+                    <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-12">
+                        Se você não sentir que isso vale 10x o que você pagou, devolvemos 100% do seu dinheiro.
+                    </p>
+                    <a href={CHECKOUT_LINK} target="_blank" rel="noopener noreferrer" onClick={handleTrackCheckout}>
+                        <button className="bg-[#FF6B35] hover:bg-red-600 text-white font-bold py-4 px-8 rounded-xl text-xl transition-all hover:scale-105">
+                            QUERO COMEÇAR AGORA MESMO
+                        </button>
+                    </a>
+                 </div>
             </section>
 
         </Suspense>
