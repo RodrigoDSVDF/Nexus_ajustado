@@ -2,8 +2,7 @@ import { memo } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { AlertTriangle } from 'lucide-react';
 
-// Atenção: Confirme se a imagem "fundo02.jpg" está na pasta "src/assets"
-// Se não tiver, o código vai dar erro. Você pode remover a linha do import e da tag <img> se não tiver a imagem.
+// Importação Real
 import fundo02 from '../assets/fundo02.jpg';
 
 const PainSection = memo(() => {
@@ -15,7 +14,6 @@ const PainSection = memo(() => {
           <div className="grid md:grid-cols-5 gap-12 items-center">
               <div className="md:col-span-2 relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#2DD4BF]/20 to-[#FF6B35]/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700"></div>
-                  {/* Se tiver convertido para webp, mude a extensão abaixo */}
                   <img 
                     src={fundo02} 
                     alt="Caos Digital" 
