@@ -1,19 +1,42 @@
-// src/components/BentoGrid.jsx
 import { useState, memo } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { Brain, Zap, Terminal, Target, ChevronRight } from 'lucide-react';
 
-// Importe suas imagens aqui
+// Importações Reais
 import produtividadeImg from '../assets/produtividade.jpg';
 import servicosIaImg from '../assets/servicos-ia.jpg';
 import xadrezImg from '../assets/xadrez-estrategia.jpg';
 import promptImg from '../assets/engenharia_prompt.png';
 
 const featuresData = [
-  { colSpan: "md:col-span-2", bgImage: xadrezImg, icon: Brain, title: "O Cérebro Digital", desc: "Não aprenda ferramentas. Aprenda os fundamentos cognitivos da IA que nunca mudam." },
-  { colSpan: "md:col-span-1", bgImage: servicosIaImg, icon: Zap, title: "Velocidade Warp", desc: "Automatize 80% do seu trabalho operacional e foque apenas no estratégico." },
-  { colSpan: "md:col-span-1", bgImage: promptImg, icon: Terminal, title: "Engenharia de Prompt", desc: "A nova linguagem de programação. Fale a língua da máquina fluentemente." },
-  { colSpan: "md:col-span-2", bgImage: produtividadeImg, icon: Target, title: "Vantagem Injusta", desc: "Implemente estratégias de nível sênior e domine o mercado." },
+  { 
+    colSpan: "md:col-span-2", 
+    bgImage: xadrezImg, 
+    icon: Brain, 
+    title: "O Cérebro Digital", 
+    desc: "Não aprenda ferramentas. Aprenda os fundamentos cognitivos da IA que nunca mudam." 
+  },
+  { 
+    colSpan: "md:col-span-1", 
+    bgImage: servicosIaImg, 
+    icon: Zap, 
+    title: "Velocidade Warp", 
+    desc: "Automatize 80% do seu trabalho operacional e foque apenas no estratégico." 
+  },
+  { 
+    colSpan: "md:col-span-1", 
+    bgImage: promptImg, 
+    icon: Terminal, 
+    title: "Engenharia de Prompt", 
+    desc: "A nova linguagem de programação. Fale a língua da máquina fluentemente." 
+  },
+  { 
+    colSpan: "md:col-span-2", 
+    bgImage: produtividadeImg, 
+    icon: Target, 
+    title: "Vantagem Injusta", 
+    desc: "Implemente estratégias de nível sênior e domine o mercado." 
+  },
 ];
 
 const BentoGrid = memo(({ checkoutLink, onTrack }) => {
@@ -22,7 +45,7 @@ const BentoGrid = memo(({ checkoutLink, onTrack }) => {
 
   return (
     <section id="bento" ref={bentoRef} className="relative z-10 pt-32 pb-16 px-4 bg-[#0A0A0A]">
-        {/* Pré-carregamento invisível das imagens para evitar piscar na troca */}
+        {/* Preload invisível */}
         <div className="hidden">
             {featuresData.map(f => <img key={f.title} src={f.bgImage} alt="" />)}
         </div>
@@ -42,7 +65,6 @@ const BentoGrid = memo(({ checkoutLink, onTrack }) => {
                         onClick={() => setActiveFeature(item)} 
                         className={`${item.colSpan} group relative bg-[#14222E] rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 nexus-card border ${activeFeature.title === item.title ? 'border-[#FF4F1F] shadow-xl shadow-[#FF4F1F]/20 scale-[1.03]' : 'border-[#1C2A35] hover:border-[#2DD4BF]/50'}`}
                     >
-                        {/* Imagem de Fundo com Lazy Loading */}
                         {item.bgImage && (
                             <div className="absolute inset-0 z-0">
                                 <img 
@@ -62,14 +84,6 @@ const BentoGrid = memo(({ checkoutLink, onTrack }) => {
                             </div>
                             <h3 className={`text-2xl font-bold mb-3 transition-colors ${activeFeature.title === item.title ? 'text-[#FF4F1F]' : 'text-white'}`}>{item.title}</h3>
                             <p className="text-gray-400 text-lg leading-relaxed">{item.desc}</p>
-                            
-                            {activeFeature.title === item.title && (
-                                <a href={checkoutLink} target="_blank" rel="noopener noreferrer" onClick={onTrack}>
-                                    <span className="flex items-center text-sm font-semibold text-[#FF4F1F] mt-4 hover:underline">
-                                        Explorar Detalhes <ChevronRight className="w-4 h-4 ml-1"/>
-                                    </span>
-                                </a>
-                            )}
                         </div>
                     </div>
                 ))}
