@@ -9,7 +9,7 @@ body {
   margin: 0;
   background-color: #0A0A0A;
   color: #f1f5f9;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Evita rolagem horizontal indesejada */
 }
 
 /* --- ANIMAÇÃO DAS FAIXAS HORIZONTAIS --- */
@@ -21,10 +21,16 @@ body {
   display: flex;
 }
 
+/* Velocidade Padrão (30s) - Usada na Primeira Faixa */
 .scrolling-banner-content {
   display: flex;
   animation: scroll 30s linear infinite;
   min-width: 100%;
+}
+
+/* Velocidade 2x Mais Rápida (15s) - Usada na Segunda Faixa */
+.scrolling-banner-content.fast {
+  animation-duration: 15s;
 }
 
 @keyframes scroll {
@@ -32,7 +38,7 @@ body {
   100% { transform: translateX(-50%); }
 }
 
-/* Efeito de brilho nas bordas */
+/* Efeito de brilho nos cards */
 .nexus-card {
   transition: all 0.3s ease;
 }
