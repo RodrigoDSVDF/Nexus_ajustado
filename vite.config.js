@@ -1,18 +1,27 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite' // <-- 1. Importe o plugin do Tailwind
-import path from 'path' // <-- Importe o 'path' do Node.js
+import path from "path"
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(), // <-- 2. Adicione o plugin aqui
-  ],
+  plugins: [react()],
+  // ADICIONE ESTA LINHA:
+  base: "/Nexus_ajustado/", 
+  
   resolve: {
     alias: {
-      // 3. Isso corrige suas importações com "@" (como "@/components/ui/button.jsx")
-      "@": path.resolve(__dirname, "./src"), 
+      "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('lucide-react')) return 'icons';
+            return 'vendor';
+          }
+        }
+      }
+    }
+  }
 })
