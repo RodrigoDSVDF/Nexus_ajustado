@@ -6,9 +6,11 @@ import path from "path"
 export default defineConfig({
   plugins: [
     react(),
-    tailwindcss(), // <--- ADICIONAMOS ISSO AQUI PARA O ESTILO VOLTAR
+    tailwindcss(),
   ],
+  // ESSA LINHA É OBRIGATÓRIA PARA O GITHUB PAGES:
   base: "/Nexus_ajustado/",
+  
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
